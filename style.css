@@ -688,6 +688,12 @@ body {
   color: var(--zp-text-muted);
 }
 
+.popup-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .popup-close {
   border: none;
   border-radius: 999px;
@@ -698,6 +704,54 @@ body {
   background: linear-gradient(90deg, var(--zp-blue) 0%, var(--zp-green) 100%);
   box-shadow: 0 12px 28px rgba(0, 51, 201, 0.18);
   cursor: pointer;
+}
+
+.secondary-button {
+  border: 1.5px solid rgba(0, 51, 201, 0.25);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--zp-blue);
+  background: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.secondary-button:hover {
+  background: rgba(0, 51, 201, 0.05);
+  border-color: var(--zp-blue);
+  transform: translateY(-1px);
+}
+
+.home-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 8;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 51, 201, 0.12);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  color: var(--zp-blue);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 51, 201, 0.15);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-btn:hover {
+  transform: scale(1.08);
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 51, 201, 0.22);
+}
+
+.home-btn:active {
+  transform: scale(0.92);
 }
 
 @media (max-width: 380px) {

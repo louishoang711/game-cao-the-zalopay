@@ -18,6 +18,8 @@ const displayName = document.getElementById("display-name");
 const scratchNote = document.getElementById("scratch-note");
 const popupOverlay = document.getElementById("popup-overlay");
 const popupCloseButton = document.getElementById("popup-close");
+const popupHomeBtn = document.getElementById("popup-home-btn");
+const homeBtn = document.getElementById("home-btn");
 const prizeImage = document.getElementById("prize-image");
 const nameField = document.getElementById("name");
 const phoneField = document.getElementById("phone");
@@ -36,6 +38,14 @@ function showStep(stepElement) {
   });
 
   stepElement.classList.add("active");
+}
+
+function goToStep1() {
+  popupOverlay.classList.remove("active");
+  resetStampStep();
+  nameField.value = "";
+  phoneField.value = "";
+  showStep(step1);
 }
 
 function goToStep2() {
@@ -280,5 +290,9 @@ stampTouchZone.addEventListener("click", handleStamp);
 popupCloseButton.addEventListener("click", () => {
   popupOverlay.classList.remove("active");
 });
+homeBtn.addEventListener("click", goToStep1);
+if (popupHomeBtn) {
+  popupHomeBtn.addEventListener("click", goToStep1);
+}
 
 popupOverlay.classList.remove("active");
