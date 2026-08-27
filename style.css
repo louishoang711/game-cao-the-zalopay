@@ -204,21 +204,17 @@ body {
   letter-spacing: -0.03em;
 }
 
-.hero-logo-wrap {
-  position: relative;
-  z-index: 1;
-  margin-top: 10px;
+.step3-logo {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.hero-logo-img {
-  height: 52px;
+.step3-logo-img {
+  height: 60px;
   width: auto;
-  max-width: 100%;
   object-fit: contain;
-  filter: brightness(0) invert(1);
 }
 
 .hero-description {
