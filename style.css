@@ -227,7 +227,7 @@ body {
   max-width: 85%;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 2px 6px rgba(0, 118, 255, 0.15));
+  mix-blend-mode: multiply;
 }
 
 .hero-description {
@@ -416,7 +416,7 @@ body {
 
 .stamp-card {
   position: relative;
-  width: 100%;
+  width: 105%;
   aspect-ratio: 3 / 4;
   border-radius: 16px;
   overflow: hidden;
