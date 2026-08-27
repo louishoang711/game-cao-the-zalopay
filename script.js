@@ -1,6 +1,6 @@
 const scratchPrizeImages = [
-  "images/anh2.jpg",
   "images/anh3.jpg",
+  "images/anh4.jpg",
 ];
 const scratchThreshold = 70;
 const scratchBrushRadius = 22;
