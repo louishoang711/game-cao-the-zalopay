@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trải nghiệm Game Cào Thẻ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="effects-layer"></div>
+
+        <div class="popup-overlay" id="popup-overlay">
+          <div class="popup-card">
+            <div class="popup-icon-wrap">
+              <div class="popup-icon">🎁</div>
+            </div>
+            <div class="popup-badge">Mở thẻ thành công</div>
+            <h3>Chúc mừng!</h3>
+            <p>
+              Bạn đã mở thẻ thành công. Hãy xem ngay phần quà dành riêng cho
+              bạn!
+            </p>
+            <button class="popup-close" type="button" id="popup-close">
+              Đã hiểu
+            </button>
+          </div>
+        </div>
+
+        <div class="app-content">
+          <div id="step1" class="step active">
+            <div class="brand-hero">
+              <div class="brand-badge">ZaloPay style</div>
+              <h1 class="hero-title">Trải nghiệm nhận quà</h1>
+              <p class="hero-description">
+                Điền thông tin để tham gia hành trình trải nghiệm cùng ZaloPay
+                theo từng bước ngay trên điện thoại.
+              </p>
+            </div>
+
+            <div class="form-panel">
+              <h2 class="step-title">Đăng Ký</h2>
+
+              <div class="form-group">
+                <label for="name">Họ tên</label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Ví dụ: Trần Ngọc Hiệp"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" id="phone" placeholder="Ví dụ: 0901234567" />
+              </div>
+
+              <button
+                class="primary-button register-button"
+                id="register-button"
+                type="button"
+              >
+                Đăng Ký
+              </button>
+            </div>
+          </div>
+
+          <div id="step2" class="step">
+            <div class="experience-panel experience-panel--compact">
+              <div class="experience-card experience-card--compact">
+                <div class="experience-image-shell">
+                  <img
+                    src="images/step2.jpg"
+                    alt="Giao diện trải nghiệm ZaloPay"
+                    class="experience-image"
+                  />
+                  <div class="experience-image-glow"></div>
+                  <div class="experience-pill">Ưu đãi nổi bật</div>
+                </div>
+
+                <button
+                  class="primary-button experience-button"
+                  id="experience-button"
+                  type="button"
+                >
+                  Đóng dấu ngay
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div id="step3" class="step">
+            <div class="brand-hero compact">
+              <div class="brand-badge">Xác nhận trải nghiệm</div>
+              <h1 class="hero-title">Chạm để đóng dấu</h1>
+            </div>
+
+            <div class="stamp-stage">
+              <div class="stamp-card" id="stamp-card">
+                <img
+                  src="images/step3.jpg"
+                  alt="Màn hình đóng dấu"
+                  class="stamp-base-image"
+                />
+                <img
+                  src="images/step2.jpg"
+                  alt="Hình ảnh ZaloPay"
+                  class="stamp-reveal-image"
+                  id="stamp-reveal-image"
+                />
+
+                <button
+                  class="stamp-touch-zone"
+                  id="stamp-touch-zone"
+                  type="button"
+                  aria-label="Chạm để đóng dấu xác nhận"
+                ></button>
+
+                <div class="stamp-ring"></div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div id="step4" class="step">
+            <div class="brand-hero compact">
+              <div class="brand-badge">Bước cào cào</div>
+              <h1 class="hero-title">Cào để mở toàn bộ ảnh</h1>
+            </div>
+
+            <div class="info-chip" id="display-name">Khách hàng ZaloPay</div>
+
+            <div class="scratch-stage">
+              <div class="scratch-wrapper">
+                <p class="scratch-note" id="scratch-note">Cạo để mở thẻ</p>
+
+                <div class="card-glow">
+                  <div class="scratch-shine"></div>
+                  <div class="scratch-container" id="scratch-container">
+                    <img
+                      id="prize-image"
+                      src="images/step2.jpg"
+                      alt="Hình ảnh ZaloPay"
+                      class="prize-image"
+                    />
+                    <canvas
+                      id="scratch-canvas"
+                      width="250"
+                      height="250"
+                    ></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="promo-footer">
+              Chúc bạn có trải nghiệm thật thú vị cùng giao diện ZaloPay.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
