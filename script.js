@@ -15,7 +15,6 @@ const experienceButton = document.getElementById("experience-button");
 const stampTouchZone = document.getElementById("stamp-touch-zone");
 const stampCard = document.getElementById("stamp-card");
 const displayName = document.getElementById("display-name");
-const scratchNote = document.getElementById("scratch-note");
 const popupOverlay = document.getElementById("popup-overlay");
 const popupCloseButton = document.getElementById("popup-close");
 const popupHomeBtn = document.getElementById("popup-home-btn");
@@ -229,8 +228,6 @@ function revealPrize() {
 
   isPrizeRevealed = true;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  scratchNote.textContent = "Mở thẻ thành công";
-  scratchNote.classList.add("revealed");
   popupOverlay.classList.add("active");
 }
 
@@ -258,8 +255,6 @@ function initScratchCard() {
   isPrizeRevealed = false;
   isDrawing = false;
   lastPoint = null;
-  scratchNote.textContent = "Cạo để mở thẻ";
-  scratchNote.classList.remove("revealed");
   popupOverlay.classList.remove("active");
   drawScratchLayer();
 
