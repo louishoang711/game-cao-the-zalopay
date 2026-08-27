@@ -204,6 +204,25 @@ body {
   letter-spacing: -0.03em;
 }
 
+.hero-logo-wrap {
+  position: relative;
+  z-index: 1;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-logo-img {
+  height: 36px;
+  width: auto;
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 4px 14px;
+  box-shadow: 0 4px 14px rgba(0, 51, 201, 0.15);
+}
+
 .hero-description {
   position: relative;
   z-index: 1;
