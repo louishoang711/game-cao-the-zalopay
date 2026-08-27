@@ -92,11 +92,7 @@ function handleStamp() {
   }
 
   stampActivated = true;
-  stampCard.classList.add("revealed");
-
-  window.setTimeout(() => {
-    goToStep4();
-  }, 850);
+  goToStep4();
 }
 
 function drawScratchLayer() {
