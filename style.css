@@ -208,12 +208,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   margin-bottom: 10px;
 }
 
 .step3-logo-img {
-  height: 60px;
-  width: auto;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 80px;
   object-fit: contain;
 }
 
