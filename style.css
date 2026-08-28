@@ -190,27 +190,41 @@ body {
   letter-spacing: -0.03em;
 }
 
+#step3 {
+  position: relative;
+  display: none;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#step3.active {
+  display: flex;
+}
+
 .step3-logo {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 16px 12px;
-  margin-bottom: 10px;
+  padding: 8px 12px;
+  margin-bottom: 6px;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-radius: 20px;
+  border-radius: 18px;
   border: 1.5px solid rgba(255, 255, 255, 0.9);
   box-shadow:
-    0 8px 32px rgba(0, 118, 255, 0.12),
-    0 2px 8px rgba(0, 0, 0, 0.06),
-    inset 0 1px 0 rgba(255,255,255,0.8);
+    0 8px 24px rgba(0, 118, 255, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
 }
 
 .step3-logo-img {
-  width: 85%;
-  max-width: 85%;
+  width: 70%;
+  max-width: 200px;
   height: auto;
   object-fit: contain;
   mix-blend-mode: multiply;
@@ -396,28 +410,33 @@ body {
 .stamp-stage {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex: 1;
   width: 100%;
-  padding: 10px 0;
+  height: 100%;
+  min-height: 0;
+  padding: 0 0 8px;
 }
 
 .stamp-card {
   position: relative;
   width: 100%;
-  max-width: 320px;
-  aspect-ratio: 3 / 4;
-  border-radius: 20px;
+  max-width: 420px;
+  height: 100%;
+  flex: 1;
+  min-height: calc(100dvh - 90px);
+  border-radius: 26px;
   overflow: hidden;
   background: #d6f0f5;
-  box-shadow: 0 20px 40px rgba(0, 51, 201, 0.16);
+  box-shadow: 0 20px 45px rgba(0, 51, 201, 0.18);
+  display: flex;
 }
 
 .stamp-base-image {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill; /* Kéo to ra và dài ra fill hết khung màn hình */
   object-position: center;
 }
 
@@ -431,7 +450,7 @@ body {
   position: absolute;
   inset: 0;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
   opacity: 0;
   transform: scale(1.06);
   transition:
@@ -446,12 +465,12 @@ body {
 
 .stamp-prize-img {
   position: absolute;
-  inset: 10% 7% 8% 7%;
-  width: calc(100% - 14%);
-  height: calc(100% - 18%);
+  inset: 6% 4%;
+  width: calc(100% - 8%);
+  height: calc(100% - 12%);
   object-fit: contain;
   object-position: center center;
-  border-radius: 18px;
+  border-radius: 20px;
   z-index: 1;
   pointer-events: none;
   mix-blend-mode: multiply;
@@ -459,15 +478,15 @@ body {
 
 .stamp-touch-zone {
   position: absolute;
-  inset: 10% 7% 8% 7%;
-  width: auto;
-  height: auto;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   border: none;
-  border-radius: 22px;
+  border-radius: 26px;
   background: transparent;
   cursor: pointer;
   display: block;
-  z-index: 2;
+  z-index: 5;
   transition:
     transform 0.22s ease,
     opacity 0.22s ease;
@@ -486,7 +505,12 @@ body {
 /* === HIỆU ỨNG ĐÓNG DẤU === */
 .stamp-seal {
   position: absolute;
-  inset: 20% 15%;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  margin-top: -75px;
+  margin-left: -75px;
   border-radius: 50%;
   border: 5px solid rgba(210, 30, 30, 0.92);
   background: rgba(210, 30, 30, 0.08);
