@@ -5,21 +5,16 @@ const scratchPrizeImages = [
 const scratchThreshold = 70;
 const scratchBrushRadius = 22;
 
-const step1 = document.getElementById("step1");
 const step3 = document.getElementById("step3");
 const step4 = document.getElementById("step4");
 
-const registerButton = document.getElementById("register-button");
 const stampTouchZone = document.getElementById("stamp-touch-zone");
 const stampCard = document.getElementById("stamp-card");
-const displayName = document.getElementById("display-name");
-const popupOverlay = document.getElementById("popup-overlay");
-const popupCloseButton = document.getElementById("popup-close");
-const popupHomeBtn = document.getElementById("popup-home-btn");
+const scratchHeader = document.getElementById("step4-scratch-header");
+const revealedHeader = document.getElementById("step4-revealed-header");
 const homeBtn = document.getElementById("home-btn");
+const revealedHomeBtn = document.getElementById("revealed-home-btn");
 const prizeImage = document.getElementById("prize-image");
-const nameField = document.getElementById("name");
-const phoneField = document.getElementById("phone");
 const canvas = document.getElementById("scratch-canvas");
 const ctx = canvas.getContext("2d", { willReadFrequently: true });
 
@@ -30,25 +25,17 @@ let stampActivated = false;
 let lastPoint = null;
 
 function showStep(stepElement) {
-  [step1, step3, step4].forEach((step) => {
+  [step3, step4].forEach((step) => {
     step.classList.remove("active");
   });
 
   stepElement.classList.add("active");
 }
 
-function goToStep1() {
-  popupOverlay.classList.remove("active");
-  resetStampStep();
-  nameField.value = "";
-  phoneField.value = "";
-  showStep(step1);
-}
-
 function goToStep3() {
   resetStampStep();
   showStep(step3);
-  // Chặn ghost click từ nút Đăng Ký
+  // Chặn ghost click
   stampTouchZone.style.pointerEvents = "none";
   window.setTimeout(() => {
     stampTouchZone.style.pointerEvents = "";
@@ -61,22 +48,9 @@ function getRandomPrizeImage() {
 }
 
 function goToStep4() {
-  displayName.textContent = nameField.value.trim() || "Khách hàng ZaloPay";
   prizeImage.src = getRandomPrizeImage();
   showStep(step4);
   initScratchCard();
-}
-
-function handleRegister() {
-  const nameValue = nameField.value.trim();
-  const phoneValue = phoneField.value.trim();
-
-  if (!nameValue || !phoneValue) {
-    alert("Vui lòng nhập đầy đủ thông tin!");
-    return;
-  }
-
-  goToStep3();
 }
 
 let stampTimeout = null;
@@ -242,7 +216,10 @@ function revealPrize() {
 
   isPrizeRevealed = true;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  popupOverlay.classList.add("active");
+  canvas.style.display = "none";
+  
+  if (scratchHeader) scratchHeader.style.display = "none";
+  if (revealedHeader) revealedHeader.style.display = "flex";
 }
 
 function stopDrawing() {
@@ -269,7 +246,11 @@ function initScratchCard() {
   isPrizeRevealed = false;
   isDrawing = false;
   lastPoint = null;
-  popupOverlay.classList.remove("active");
+  
+  canvas.style.display = "block";
+  if (scratchHeader) scratchHeader.style.display = "flex";
+  if (revealedHeader) revealedHeader.style.display = "none";
+
   drawScratchLayer();
 
   if (scratchInitialized) {
@@ -289,14 +270,8 @@ function initScratchCard() {
   scratchInitialized = true;
 }
 
-registerButton.addEventListener("click", handleRegister);
 stampTouchZone.addEventListener("click", handleStamp);
-popupCloseButton.addEventListener("click", () => {
-  popupOverlay.classList.remove("active");
-});
-homeBtn.addEventListener("click", goToStep1);
-if (popupHomeBtn) {
-  popupHomeBtn.addEventListener("click", goToStep1);
+homeBtn.addEventListener("click", goToStep3);
+if (revealedHomeBtn) {
+  revealedHomeBtn.addEventListener("click", goToStep3);
 }
-
-popupOverlay.classList.remove("active");

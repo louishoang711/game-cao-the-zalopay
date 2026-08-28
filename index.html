@@ -2,10 +2,10 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>Trải nghiệm Game Cào Thẻ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -13,72 +13,11 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="phone-frame">
-      <div class="phone-notch"></div>
-      <div class="phone-screen">
-        <div class="effects-layer"></div>
+    <div class="mobile-container">
+      <div class="effects-layer"></div>
 
-        <div class="popup-overlay" id="popup-overlay">
-          <div class="popup-card">
-            <div class="popup-icon-wrap">
-              <div class="popup-icon">🎁</div>
-            </div>
-            <div class="popup-badge">Mở thẻ thành công</div>
-            <h3>Chúc mừng!</h3>
-            <p>
-              Bạn đã mở thẻ thành công. Hãy xem ngay phần quà dành riêng cho
-              bạn!
-            </p>
-            <div class="popup-actions">
-              <button class="popup-close primary-button" type="button" id="popup-close">
-                Đã hiểu
-              </button>
-              <button class="popup-home-btn secondary-button" type="button" id="popup-home-btn">
-                🏠 Về trang chủ
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="app-content">
-          <div id="step1" class="step active">
-            <div class="brand-hero">
-              <div class="brand-badge">ZaloPay style</div>
-              <h1 class="hero-title">Trải nghiệm nhận quà</h1>
-              <p class="hero-description">
-                Điền thông tin để tham gia hành trình trải nghiệm cùng ZaloPay
-                theo từng bước ngay trên điện thoại.
-              </p>
-            </div>
-
-            <div class="form-panel">
-              <h2 class="step-title">Đăng Ký</h2>
-
-              <div class="form-group">
-                <label for="name">Họ tên</label>
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="Ví dụ: Trần Ngọc Hiệp"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="phone">Số điện thoại</label>
-                <input type="tel" id="phone" placeholder="Ví dụ: 0901234567" />
-              </div>
-
-              <button
-                class="primary-button register-button"
-                id="register-button"
-                type="button"
-              >
-                Đăng Ký
-              </button>
-            </div>
-          </div>
-
-          <div id="step3" class="step">
+      <div class="app-content">
+          <div id="step3" class="step active">
             <div class="step3-logo">
                 <img src="step2.jpg" alt="Logo ZaloPay" class="step3-logo-img" />
             </div>
@@ -119,47 +58,89 @@
           </div>
 
           <div id="step4" class="step">
-            <button class="home-btn" id="home-btn" type="button" aria-label="Trở về trang chủ" title="Trở về trang chủ">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                <polyline points="9 22 9 12 15 12 15 22"/>
-              </svg>
-            </button>
-
-            <div class="brand-hero compact">
-              <h1 class="hero-title" style="font-size:18px">Hãy mở phần quà của bạn</h1>
+            <!-- Header cho màn hình cào (State 1) -->
+            <div class="step4-header" id="step4-scratch-header">
+              <div class="scratch-pill-title">
+                <span>Hãy mở phần quà của bạn</span>
+              </div>
+              <button class="home-btn" id="home-btn" type="button" aria-label="Trở về trang chủ" title="Trở về trang chủ">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </button>
             </div>
 
-            <div class="info-chip" id="display-name">Khách hàng ZaloPay</div>
-
-            <div class="scratch-stage">
-              <div class="scratch-wrapper">
-                <div class="card-glow">
-                  <div class="scratch-shine"></div>
-                  <div class="scratch-container" id="scratch-container">
-                    <img
-                      id="prize-image"
-                      src="images/step21.jpg"
-                      alt="Hình ảnh ZaloPay"
-                      class="prize-image"
-                    />
-                    <canvas
-                      id="scratch-canvas"
-                      width="250"
-                      height="250"
-                    ></canvas>
-                  </div>
+            <!-- Header cho màn hình kết quả sau khi cào xong (State 2) -->
+            <div class="step4-header revealed-header" id="step4-revealed-header" style="display: none;">
+              <button class="home-btn home-btn-top-right" id="revealed-home-btn" type="button" aria-label="Trở về trang chủ" title="Trở về trang chủ">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </button>
+              
+              <div class="congrats-banner">
+                <div class="gift-box-wrapper">
+                  <svg class="gift-box-svg" viewBox="0 0 120 120" width="76" height="76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="boxGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#ff334b"/>
+                        <stop offset="100%" stop-color="#b80c22"/>
+                      </linearGradient>
+                      <linearGradient id="lidGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#ff4d63"/>
+                        <stop offset="100%" stop-color="#c91028"/>
+                      </linearGradient>
+                      <linearGradient id="redRibbonGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#ff7b8d"/>
+                        <stop offset="50%" stop-color="#d61129"/>
+                        <stop offset="100%" stop-color="#8a0010"/>
+                      </linearGradient>
+                      <filter id="giftShadow" x="-10%" y="-10%" width="120%" height="130%">
+                        <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#b80c22" flood-opacity="0.22"/>
+                      </filter>
+                    </defs>
+                    <g filter="url(#giftShadow)">
+                      <rect x="24" y="50" width="72" height="54" rx="6" fill="url(#boxGrad)"/>
+                      <rect x="52" y="50" width="16" height="54" fill="url(#redRibbonGrad)"/>
+                      <rect x="24" y="70" width="72" height="14" fill="url(#redRibbonGrad)"/>
+                      <rect x="18" y="40" width="84" height="15" rx="4" fill="url(#lidGrad)"/>
+                      <rect x="52" y="40" width="16" height="15" fill="url(#redRibbonGrad)"/>
+                      <path d="M57 40 C44 18, 18 16, 28 34 C35 42, 51 40, 57 40 Z" fill="url(#redRibbonGrad)"/>
+                      <path d="M54 36 C42 20, 26 21, 33 32 C38 38, 50 36, 54 36 Z" fill="#ff4d63" opacity="0.6"/>
+                      <path d="M63 40 C76 18, 102 16, 92 34 C85 42, 69 40, 63 40 Z" fill="url(#redRibbonGrad)"/>
+                      <path d="M66 36 C78 20, 94 21, 87 32 C82 38, 70 36, 66 36 Z" fill="#ff4d63" opacity="0.6"/>
+                      <circle cx="60" cy="40" r="7" fill="#ff243e"/>
+                      <circle cx="60" cy="39" r="5" fill="#ff6b7e" opacity="0.7"/>
+                      <path d="M55 44 C47 52, 40 60, 36 66 C42 63, 50 56, 56 46 Z" fill="url(#redRibbonGrad)"/>
+                      <path d="M65 44 C73 52, 80 60, 84 66 C78 63, 70 56, 64 46 Z" fill="url(#redRibbonGrad)"/>
+                    </g>
+                  </svg>
                 </div>
+                <h2 class="congrats-title">Chúc mừng bạn nhận được</h2>
               </div>
             </div>
 
-            <div class="promo-footer">
-              Chúc bạn có trải nghiệm thật thú vị cùng giao diện ZaloPay.
+            <!-- Khu vực thẻ cào / hiển thị kết quả -->
+            <div class="scratch-stage">
+              <div class="scratch-card-frame" id="scratch-card-frame">
+                <img
+                  id="prize-image"
+                  src="images/anh3.jpg"
+                  alt="Phần quà ZaloPay"
+                  class="prize-image"
+                />
+                <canvas
+                  id="scratch-canvas"
+                  width="360"
+                  height="520"
+                ></canvas>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
     <script src="script.js"></script>
   </body>

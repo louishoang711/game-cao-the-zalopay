@@ -18,11 +18,12 @@
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 20px;
-  font-family: "Be Vietnam Pro", Arial, sans-serif;
+  align-items: stretch;
+  padding: 0;
+  font-family: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
   color: var(--zp-text);
   background:
     radial-gradient(
@@ -36,41 +37,24 @@ body {
       transparent 26%
     ),
     linear-gradient(180deg, #eef6ff 0%, #e8f0fb 48%, #edf4fb 100%);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.phone-frame {
-  width: min(100%, 360px);
-  height: min(740px, calc(100vh - 24px));
-  background: linear-gradient(180deg, #16203d 0%, #0f1831 100%);
-  border-radius: 42px;
-  padding: 10px;
-  position: relative;
-  box-shadow:
-    0 0 0 4px rgba(255, 255, 255, 0.08),
-    0 28px 70px rgba(7, 24, 67, 0.35);
-}
-
-.phone-notch {
-  position: absolute;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 112px;
-  height: 28px;
-  background: #0b1226;
-  border-radius: 18px;
-  z-index: 4;
-}
-
-.phone-screen {
+.mobile-container {
   width: 100%;
-  height: 100%;
+  max-width: 440px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
   position: relative;
-  overflow: hidden;
-  border-radius: 34px;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
   background:
     linear-gradient(145deg, rgba(0, 207, 106, 0.08), rgba(0, 180, 255, 0.1)),
     linear-gradient(180deg, #f9fcff 0%, #f1f7ff 58%, #ecf4ff 100%);
+  box-shadow: 0 0 40px rgba(0, 51, 201, 0.08);
 }
 
 .effects-layer,
@@ -132,9 +116,11 @@ body {
   z-index: 2;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: 56px 20px 24px;
+  flex: 1;
+  padding: 8px 12px 8px;
   color: var(--zp-text);
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .step {
@@ -412,16 +398,19 @@ body {
   justify-content: center;
   align-items: center;
   flex: 1;
+  width: 100%;
+  padding: 10px 0;
 }
 
 .stamp-card {
   position: relative;
-  width: 105%;
+  width: 100%;
+  max-width: 320px;
   aspect-ratio: 3 / 4;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
   background: #d6f0f5;
-  box-shadow: 0 22px 42px rgba(0, 51, 201, 0.16);
+  box-shadow: 0 20px 40px rgba(0, 51, 201, 0.16);
 }
 
 .stamp-base-image {
@@ -609,250 +598,177 @@ body {
   box-shadow: 0 10px 24px rgba(0, 51, 201, 0.08);
 }
 
-.scratch-stage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* === STEP 4: MÀN HÌNH CÀO & KẾT QUẢ MỞ QUÀ === */
+#step4 {
+  position: relative;
+  display: none;
+  flex-direction: column;
   flex: 1;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  padding-top: 2px;
 }
 
-.scratch-wrapper {
+#step4.active {
+  display: flex;
+}
+
+/* Header cho State 1: Đang cào thẻ */
+.step4-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 8px;
+  min-height: 42px;
+  flex-shrink: 0;
+}
+
+.scratch-pill-title {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0033c9 0%, #00a2ff 60%, #00cf6a 100%);
+  box-shadow: 0 8px 20px rgba(0, 51, 201, 0.2);
+  display: flex;
+  align-items: center;
+}
+
+.scratch-pill-title span {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* Header cho State 2: Đã mở phần thưởng */
+.step4-header.revealed-header {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
   width: 100%;
+  margin-top: -2px;
+  margin-bottom: 4px;
+  padding-top: 0;
+  flex-shrink: 0;
 }
 
-.card-glow {
-  position: relative;
-  display: inline-flex;
-  padding: 0;
-  border-radius: 28px;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 207, 106, 0.24),
-    rgba(0, 51, 201, 0.16)
-  );
-  box-shadow: 0 22px 42px rgba(0, 51, 201, 0.16);
-  width: 100%;
-}
-
-.scratch-shine {
+.home-btn-top-right {
   position: absolute;
-  top: 10px;
-  left: 14px;
-  width: 62px;
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.65);
-  filter: blur(0.3px);
-  z-index: 3;
+  top: -2px;
+  right: 0;
+  z-index: 10;
 }
 
-.scratch-container {
+.congrats-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  text-align: center;
+}
+
+.gift-box-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -4px;
+  animation: gift-bounce 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.gift-box-svg {
+  width: 52px;
+  height: 52px;
+}
+
+@keyframes gift-bounce {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.congrats-title {
+  margin: 2px 0 4px;
+  font-size: 16px;
+  font-weight: 800;
+  color: #0b4594;
+  letter-spacing: -0.02em;
+}
+
+/* Khung viền xanh lá thẻ cào / hiển thị quà (mở rộng tối đa to ra, dài ra chạm đáy) */
+.scratch-stage {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 0 0 8px;
+}
+
+.scratch-card-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 28px;
+  max-width: 420px;
+  height: 100%;
+  flex: 1;
+  min-height: calc(100dvh - 100px);
+  border-radius: 26px;
+  border: 4.5px solid #00cf6a;
+  background: #ffffff;
   overflow: hidden;
-  background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
-  border: none;
-  box-shadow: none;
+  box-shadow: 0 16px 36px rgba(0, 207, 106, 0.22), 0 8px 24px rgba(0, 51, 201, 0.12);
+  display: flex;
 }
 
-.prize-image,
+.prize-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill; /* Kéo dài ra to ra fill trọn vẹn toàn bộ khung viền */
+  object-position: center;
+}
+
 #scratch-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-}
-
-.prize-image {
-  object-fit: cover;
-  object-position: center;
-  padding: 0;
-  background: transparent;
-}
-
-#scratch-canvas {
   z-index: 2;
   cursor: crosshair;
   touch-action: none;
 }
 
-.scratch-note {
-  margin: 0;
-  color: var(--zp-blue);
-  font-size: 15px;
-  font-weight: 800;
-  text-align: center;
-  min-height: 22px;
-  transition:
-    color 0.3s ease,
-    transform 0.3s ease;
-}
-
-.scratch-note.revealed {
-  color: var(--zp-blue);
-  transform: scale(1.02);
-}
-
-.promo-footer {
-  margin-top: 18px;
-  text-align: center;
-  color: var(--zp-text-muted);
-  font-size: 13px;
-  line-height: 1.6;
-  padding-inline: 8px;
-}
-
-.popup-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: rgba(9, 23, 59, 0.34);
-  backdrop-filter: blur(6px);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition:
-    opacity 0.28s ease,
-    visibility 0.28s ease;
-}
-
-.popup-overlay.active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.popup-card {
-  width: 100%;
-  max-width: 290px;
-  border-radius: 24px;
-  padding: 24px 20px 22px;
-  text-align: center;
-  background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
-  border: 1px solid rgba(0, 51, 201, 0.1);
-  box-shadow: 0 22px 50px rgba(0, 51, 201, 0.18);
-}
-
-.popup-icon-wrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.popup-icon {
-  width: 68px;
-  height: 68px;
-  border-radius: 22px;
-  display: grid;
-  place-items: center;
-  font-size: 30px;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 51, 201, 0.12),
-    rgba(0, 207, 106, 0.18)
-  );
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
-}
-
-.popup-badge {
-  display: inline-flex;
-  margin-bottom: 10px;
-  padding: 7px 12px;
-  border-radius: 999px;
-  background: var(--zp-green-soft);
-  color: #06a353;
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.popup-card h3 {
-  margin: 0 0 10px;
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--zp-blue);
-}
-
-.popup-card p {
-  margin: 0 0 18px;
-  line-height: 1.6;
-  color: var(--zp-text-muted);
-}
-
-.popup-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.popup-close {
-  border: none;
-  border-radius: 999px;
-  padding: 11px 20px;
-  font-weight: 800;
-  font-family: inherit;
-  color: #ffffff;
-  background: linear-gradient(90deg, var(--zp-blue) 0%, var(--zp-green) 100%);
-  box-shadow: 0 12px 28px rgba(0, 51, 201, 0.18);
-  cursor: pointer;
-}
-
-.secondary-button {
-  border: 1.5px solid rgba(0, 51, 201, 0.25);
-  border-radius: 999px;
-  padding: 10px 18px;
-  font-weight: 700;
-  font-size: 14px;
-  font-family: inherit;
-  color: var(--zp-blue);
-  background: #ffffff;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-}
-
-.secondary-button:hover {
-  background: rgba(0, 51, 201, 0.05);
-  border-color: var(--zp-blue);
-  transform: translateY(-1px);
-}
-
-#step4 {
-  position: relative;
-  padding-top: 16px;
-}
-
 .home-btn {
-  position: absolute;
-  top: 2px;
-  right: 0;
-  z-index: 10;
+  position: relative;
   width: 42px;
   height: 42px;
+  flex-shrink: 0;
   border-radius: 50%;
-  border: 1px solid rgba(0, 51, 201, 0.15);
-  background: rgba(255, 255, 255, 0.94);
+  border: 1.5px solid rgba(0, 51, 201, 0.2);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(8px);
   color: var(--zp-blue);
   display: grid;
   place-items: center;
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0, 51, 201, 0.18);
+  box-shadow: 0 6px 18px rgba(0, 51, 201, 0.16);
   transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .home-btn:hover {
-  transform: scale(1.08);
+  transform: scale(1.06);
   background: #ffffff;
-  box-shadow: 0 8px 22px rgba(0, 51, 201, 0.26);
+  box-shadow: 0 8px 22px rgba(0, 51, 201, 0.24);
 }
 
 .home-btn:active {
@@ -860,43 +776,16 @@ body {
 }
 
 @media (max-width: 380px) {
-  body {
-    padding: 12px;
-  }
-
-  .phone-frame {
-    width: 100%;
-    height: calc(100vh - 8px);
-    border-radius: 32px;
-  }
-
-  .phone-screen {
-    border-radius: 24px;
-  }
-
   .app-content {
-    padding-inline: 16px;
+    padding: 10px 12px 14px;
   }
 
-  .experience-card {
-    gap: 12px;
-    padding: 24px 18px;
+  .stamp-card,
+  .scratch-card-frame {
+    max-width: 300px;
   }
 
-  .experience-image-shell {
-    max-height: 300px;
-  }
-
-  .scratch-container {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-  }
-
-  .step-title {
-    font-size: 29px;
-  }
-
-  .hero-title {
-    font-size: 20px;
+  .scratch-pill-title span {
+    font-size: 14px;
   }
 }
