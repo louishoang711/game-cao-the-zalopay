@@ -461,7 +461,7 @@ body {
   width: calc(100% - 14%);
   height: calc(100% - 18%);
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 50%;
   border-radius: 18px;
   z-index: 1;
   pointer-events: none;
