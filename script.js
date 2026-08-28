@@ -79,8 +79,15 @@ function handleRegister() {
   goToStep3();
 }
 
+let stampTimeout = null;
+
 function resetStampStep() {
   stampActivated = false;
+  if (stampTimeout) {
+    clearTimeout(stampTimeout);
+    stampTimeout = null;
+  }
+  stampCard.classList.remove("stamping");
   stampCard.classList.remove("revealed");
 }
 
@@ -92,7 +99,11 @@ function handleStamp() {
   stampActivated = true;
   stampCard.classList.add("stamping");
 
-  window.setTimeout(() => {
+  if (stampTimeout) {
+    clearTimeout(stampTimeout);
+  }
+
+  stampTimeout = window.setTimeout(() => {
     goToStep4();
   }, 750);
 }
