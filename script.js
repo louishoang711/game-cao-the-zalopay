@@ -85,7 +85,11 @@ function handleStamp() {
   }
 
   stampActivated = true;
-  goToStep4();
+  stampCard.classList.add("stamping");
+
+  window.setTimeout(() => {
+    goToStep4();
+  }, 750);
 }
 
 function drawScratchLayer() {
