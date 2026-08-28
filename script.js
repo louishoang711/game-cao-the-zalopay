@@ -48,6 +48,11 @@ function goToStep1() {
 function goToStep3() {
   resetStampStep();
   showStep(step3);
+  // Chặn ghost click từ nút Đăng Ký
+  stampTouchZone.style.pointerEvents = "none";
+  window.setTimeout(() => {
+    stampTouchZone.style.pointerEvents = "";
+  }, 400);
 }
 
 function getRandomPrizeImage() {
