@@ -455,6 +455,17 @@ body {
   transform: scale(1);
 }
 
+.stamp-prize-img {
+  position: absolute;
+  inset: 10% 7% 8% 7%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  border-radius: 22px;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .stamp-touch-zone {
   position: absolute;
   inset: 10% 7% 8% 7%;
@@ -462,16 +473,13 @@ body {
   height: auto;
   border: none;
   border-radius: 22px;
-  background: rgba(14, 17, 27, 0.988);
+  background: transparent;
   cursor: pointer;
   display: block;
-  box-shadow:
-    0 18px 30px rgba(7, 18, 43, 0.3),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  z-index: 2;
   transition:
     transform 0.22s ease,
-    opacity 0.22s ease,
-    background 0.22s ease;
+    opacity 0.22s ease;
 }
 
 .stamp-touch-zone:active {
