@@ -6,12 +6,10 @@ const scratchThreshold = 70;
 const scratchBrushRadius = 22;
 
 const step1 = document.getElementById("step1");
-const step2 = document.getElementById("step2");
 const step3 = document.getElementById("step3");
 const step4 = document.getElementById("step4");
 
 const registerButton = document.getElementById("register-button");
-const experienceButton = document.getElementById("experience-button");
 const stampTouchZone = document.getElementById("stamp-touch-zone");
 const stampCard = document.getElementById("stamp-card");
 const displayName = document.getElementById("display-name");
@@ -32,7 +30,7 @@ let stampActivated = false;
 let lastPoint = null;
 
 function showStep(stepElement) {
-  [step1, step2, step3, step4].forEach((step) => {
+  [step1, step3, step4].forEach((step) => {
     step.classList.remove("active");
   });
 
@@ -45,10 +43,6 @@ function goToStep1() {
   nameField.value = "";
   phoneField.value = "";
   showStep(step1);
-}
-
-function goToStep2() {
-  showStep(step2);
 }
 
 function goToStep3() {
@@ -77,7 +71,7 @@ function handleRegister() {
     return;
   }
 
-  goToStep2();
+  goToStep3();
 }
 
 function resetStampStep() {
@@ -276,7 +270,6 @@ function initScratchCard() {
 }
 
 registerButton.addEventListener("click", handleRegister);
-experienceButton.addEventListener("click", goToStep3);
 stampTouchZone.addEventListener("click", handleStamp);
 popupCloseButton.addEventListener("click", () => {
   popupOverlay.classList.remove("active");
