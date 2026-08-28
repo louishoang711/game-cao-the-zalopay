@@ -460,11 +460,12 @@ body {
   inset: 10% 7% 8% 7%;
   width: calc(100% - 14%);
   height: calc(100% - 18%);
-  object-fit: cover;
-  object-position: center 50%;
+  object-fit: contain;
+  object-position: center center;
   border-radius: 18px;
   z-index: 1;
   pointer-events: none;
+  mix-blend-mode: multiply;
 }
 
 .stamp-touch-zone {
