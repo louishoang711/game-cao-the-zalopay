@@ -466,17 +466,41 @@ body {
   transform: scale(1);
 }
 
-.stamp-prize-img {
+.stamp-brand-logo {
   position: absolute;
-  inset: 12% 9% 13% 9%;
-  width: calc(100% - 18%);
-  height: calc(100% - 25%);
-  object-fit: contain;
-  object-position: center center;
-  border-radius: 18px;
-  z-index: 1;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 2;
   pointer-events: none;
-  mix-blend-mode: multiply;
+  user-select: none;
+}
+
+.zp-zalo {
+  font-family: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  font-size: 38px;
+  font-weight: 800;
+  color: #008fe5;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.zp-pay {
+  font-family: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  font-size: 38px;
+  font-weight: 800;
+  color: #ffffff;
+  background: #00c853;
+  padding: 3px 12px 5px;
+  border-radius: 12px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .stamp-touch-zone {
@@ -551,7 +575,7 @@ body {
   text-transform: uppercase;
 }
 
-.stamp-card.stamping .stamp-prize-img {
+.stamp-card.stamping .stamp-brand-logo {
   animation: stamp-press 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
@@ -560,10 +584,10 @@ body {
 }
 
 @keyframes stamp-press {
-  0%   { transform: scale(1); }
-  25%  { transform: scale(0.93); filter: brightness(0.85); }
-  55%  { transform: scale(1.03); filter: brightness(1); }
-  100% { transform: scale(1); }
+  0%   { transform: translate(-50%, -50%) scale(1); }
+  25%  { transform: translate(-50%, -50%) scale(0.93); filter: brightness(0.85); }
+  55%  { transform: translate(-50%, -50%) scale(1.03); filter: brightness(1); }
+  100% { transform: translate(-50%, -50%) scale(1); }
 }
 
 @keyframes stamp-drop {
@@ -576,9 +600,9 @@ body {
 
 .stamp-ring {
   position: absolute;
-  inset: 11% 8% 12% 8%;
-  border-radius: 20px;
-  border: 2px dashed rgba(0, 51, 201, 0.2);
+  inset: 10% 7.5% 11% 7.5%;
+  border-radius: 22px;
+  border: 2px dashed rgba(0, 100, 220, 0.28);
   pointer-events: none;
   transition:
     opacity 0.22s ease,
